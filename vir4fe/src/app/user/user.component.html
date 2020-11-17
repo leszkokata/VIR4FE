@@ -1,1 +1,24 @@
-<p>user works!</p>
+<mat-toolbar color="primary">
+    <span [routerLink]="['/user']">PhotoExplorer</span>
+</mat-toolbar>
+
+<div class="main-div">
+    <div *ngFor="let jpg of jpgs" >
+        <mat-card>
+            <img mat-card-image src={{jpg.img}} >
+        </mat-card>
+    </div>
+    
+    <div *ngFor="let png of pngs">
+        <mat-card>
+            <img mat-card-image src={{png.img}} >
+        </mat-card>
+    </div>
+    
+    <div *ngFor="let gif of gifs">
+        <mat-card>
+            <img mat-card-image src={{gif.img}} >
+        </mat-card>
+    </div>
+</div>
+

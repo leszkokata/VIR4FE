@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickLogin() {/*
+  clickLogin() {
+    this.router.navigate(['/admin']);
+    /*
     this.loginService.login(this.username, this.password).subscribe(data => {
       localStorage.setItem('username', this.username);
       if (

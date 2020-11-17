@@ -1,0 +1,9 @@
+.mat-card {
+    max-width: 500px;
+    display:inline-block;
+}
+
+.main-div {
+    width: 100%;
+   text-align:center;
+}
