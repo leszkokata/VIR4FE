@@ -1,0 +1,18 @@
+.form {
+    width: 200px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.mat-form-field-label {
+    color:black !important;
+}
+
+.email, .password {
+    width: 100%;
+}
+
+.buttondiv {
+    justify-content: center;
+    display: flex;
+}
