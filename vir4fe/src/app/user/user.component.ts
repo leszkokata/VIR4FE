@@ -1,11 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
+export interface User {
+  username: string;
+  jpg: boolean;
+  png: boolean;
+  gif: boolean;
+}
+
+const DATA: User[] = [
+  { username: 'joska',
+  jpg: true,
+  png: true,
+  gif: false
+},
+{ username: 'viri',
+  jpg: true,
+  png: false,
+  gif: false
+},
+{ username: 'piri',
+  jpg: true,
+  png: true,
+  gif: true
+},
+]
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
+  name: string;
+  username: string;
+  email: string;
+  password:string;
+  
   jpgs = [
     {img: '/assets/photos/jpg/1.jpg'},
     {img: '/assets/photos/jpg/2.jpg'},
@@ -45,9 +77,24 @@ export class UserComponent implements OnInit {
     {img: '/assets/photos/gif/10.gif'},
   ];
 
-  constructor() { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
+  user = 
+    { username: 'joska',
+    jpg: true,
+    png: true,
+    gif: false
+  };
+  //kijelentkezes, visszairanyitas a login oldalra
+  clickLogout() {
+    this.loginService.logout(this.username, this.password).subscribe(data => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    },error =>{
+      console.log('error', error);
+    });
+  }
 }

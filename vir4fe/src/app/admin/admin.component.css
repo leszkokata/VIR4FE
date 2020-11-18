@@ -2,3 +2,7 @@ table {
     width: 98%;
     margin: 10px 10px;
   }
+
+.mat-flat-button {
+    margin-left: 70%;
+}

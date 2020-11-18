@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
     <span [routerLink]="['/admin']">PhotoExplorer</span>
+    <button mat-flat-button (click)=clickLogout()>Kijelentkezés</button>
+
 </mat-toolbar>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

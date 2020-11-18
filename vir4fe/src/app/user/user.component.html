@@ -1,22 +1,23 @@
 <mat-toolbar color="primary">
     <span [routerLink]="['/user']">PhotoExplorer</span>
+    <button mat-flat-button (click)=clickLogout()>Kijelentkezés</button>
 </mat-toolbar>
 
 <div class="main-div">
     <div *ngFor="let jpg of jpgs" >
-        <mat-card>
+        <mat-card *ngIf="user.jpg">
             <img mat-card-image src={{jpg.img}} >
         </mat-card>
     </div>
     
     <div *ngFor="let png of pngs">
-        <mat-card>
+        <mat-card *ngIf="user.png">
             <img mat-card-image src={{png.img}} >
         </mat-card>
     </div>
     
     <div *ngFor="let gif of gifs">
-        <mat-card>
+        <mat-card *ngIf="user.gif">
             <img mat-card-image src={{gif.img}} >
         </mat-card>
     </div>
