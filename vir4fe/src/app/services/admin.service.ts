@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export class UserModel {
+  name: string;
+  username: string;
+  permToJpg: boolean;
+  permToPng: boolean;
+  permToGif: boolean;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +21,7 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  setPermissions(username:string, permToJpg: boolean, permToPng: boolean, permToGif: boolean):Observable<any> {
+  setUserData(id: string,name: string, username:string, permToJpg: boolean, permToPng: boolean, permToGif: boolean):Observable<any> {
     const httpOptions = {
       withCredentials: true,
       headers: new HttpHeaders({
@@ -22,12 +29,13 @@ export class AdminService {
       })
     };
 
-    return this.http.post('http://localhost:8080/admin/setPermission', {
-      username:username, permToJpg: permToJpg, permToPng: permToPng, permToGif: permToGif
+    return this.http.put('http://localhost:8080/admin/setpermissondata', {
+      id: id,
+      name: name, username:username, permToJpg: permToJpg, permToPng: permToPng, permToGif: permToGif
   }, httpOptions);
   }
 
-  getUserData(name: string):Observable<any> {
+  getUserData():Observable<any> {
     const httpOptions = {
       withCredentials: true,
       headers: new HttpHeaders({
@@ -36,6 +44,5 @@ export class AdminService {
     };
     return this.http.get('http://localhost:8080/admin/getpermissondata'+ name, httpOptions);
   }
-
 
 }

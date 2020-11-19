@@ -6,29 +6,29 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="username">
+    <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Név </th>
-      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
   
     <ng-container matColumnDef="jpg">
       <th mat-header-cell *matHeaderCellDef> Jpg láthatási jog </th>
       <td mat-cell *matCellDef="let element"> 
-          <input type="checkbox" [(ngModel)]="element.jpg"/> 
+          <input type="checkbox" (click)="changePermission(element,'permToJpg')" [(ngModel)]="element.permToJpg"/> 
       </td>
     </ng-container>
   
     <ng-container matColumnDef="png">
       <th mat-header-cell *matHeaderCellDef> Png láthatási jog</th>
       <td mat-cell *matCellDef="let element">
-          <input type="checkbox" [(ngModel)]="element.png"/> 
+          <input type="checkbox" (click)="changePermission(element,'permToPng')" [(ngModel)]="element.permToPng"/> 
       </td>
     </ng-container>
   
     <ng-container matColumnDef="gif">
         <th mat-header-cell *matHeaderCellDef> Gif láthatási jog</th>
         <td mat-cell *matCellDef="let element">
-            <input type="checkbox" [(ngModel)]="element.gif"/> 
+            <input type="checkbox" (click)="changePermission(element,'permToGif')"[(ngModel)]="element.permToGif"/> 
         </td>
     </ng-container>
 
@@ -36,4 +36,22 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   
-  
+  <div class="main-div">
+    <div *ngFor="let jpg of jpgs" >
+        <mat-card>
+            <img class="img" src={{jpg.img}} >
+        </mat-card>
+    </div>
+    
+    <div *ngFor="let png of pngs">
+        <mat-card>
+            <img class="img" src={{png.img}} >
+        </mat-card>
+    </div>
+    
+    <div *ngFor="let gif of gifs">
+        <mat-card>
+            <img class="img" src={{gif.img}} >
+        </mat-card>
+    </div>
+</div>

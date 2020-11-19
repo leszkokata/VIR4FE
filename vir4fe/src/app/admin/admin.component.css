@@ -6,3 +6,17 @@ table {
 .mat-flat-button {
     margin-left: 70%;
 }
+
+.mat-card {
+  max-width: 500px;
+  display:inline-block;
+}
+
+.main-div {
+  width: 100%;
+ text-align:center;
+}
+
+.img {
+  width: calc(100% + 1px) !important;
+}
