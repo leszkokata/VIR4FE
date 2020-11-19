@@ -1,31 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 
-export interface User {
-  username: string;
-  jpg: boolean;
-  png: boolean;
-  gif: boolean;
-}
-
-const DATA: User[] = [
-  { username: 'joska',
-  jpg: true,
-  png: true,
-  gif: false
-},
-{ username: 'viri',
-  jpg: true,
-  png: false,
-  gif: false
-},
-{ username: 'piri',
-  jpg: true,
-  png: true,
-  gif: true
-},
-]
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -77,17 +54,15 @@ export class UserComponent implements OnInit {
     {img: '/assets/photos/gif/10.gif'},
   ];
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getPermissionData();
   }
+  permToJpg: boolean;
+  permToPng: boolean;
+  permToGif: boolean;
 
-  user = 
-    { username: 'joska',
-    jpg: true,
-    png: true,
-    gif: false
-  };
   //kijelentkezes, visszairanyitas a login oldalra
   clickLogout() {
     this.loginService.logout(this.username, this.password).subscribe(data => {
@@ -96,5 +71,15 @@ export class UserComponent implements OnInit {
     },error =>{
       console.log('error', error);
     });
+  }
+  //a jogosultsagi adatok lekerdezese, beallitasa
+  getPermissionData() {
+    this.userService.getPermissionData().subscribe(data => {
+      this.permToJpg = data.message[0].permToJpg;
+      this.permToPng = data.message[0].permToPng;
+      this.permToGif = data.message[0].permToGif;
+    }, error =>{
+      console.log('error:', error)
+    })
   }
 }

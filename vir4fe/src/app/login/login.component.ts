@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
         data.message == "Az admin bejelentkezese sikeres!") {
         this.router.navigate(['/admin']);
         this.adminService.setName(data.name);
-
       } else {
         this.router.navigate(['/user']);
       }

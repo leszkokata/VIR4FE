@@ -21,7 +21,7 @@ export class UserService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.get('http://localhost:8080/user/permissiondata', httpOptions);
+    return this.http.get('http://localhost:8080/user/getpermissondata', httpOptions);
   }
 
 }

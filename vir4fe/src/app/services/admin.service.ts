@@ -34,7 +34,7 @@ export class AdminService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.get('http://localhost:8080/user/'+ name, httpOptions);
+    return this.http.get('http://localhost:8080/admin/getpermissondata'+ name, httpOptions);
   }
 
 

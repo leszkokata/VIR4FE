@@ -5,19 +5,19 @@
 
 <div class="main-div">
     <div *ngFor="let jpg of jpgs" >
-        <mat-card *ngIf="user.jpg">
+        <mat-card *ngIf="permToJpg">
             <img mat-card-image src={{jpg.img}} >
         </mat-card>
     </div>
     
     <div *ngFor="let png of pngs">
-        <mat-card *ngIf="user.png">
+        <mat-card *ngIf="permToPng">
             <img mat-card-image src={{png.img}} >
         </mat-card>
     </div>
     
     <div *ngFor="let gif of gifs">
-        <mat-card *ngIf="user.gif">
+        <mat-card *ngIf="permToGif">
             <img mat-card-image src={{gif.img}} >
         </mat-card>
     </div>
