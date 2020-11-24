@@ -29,7 +29,7 @@ export class AdminService {
       })
     };
 
-    return this.http.put('http://localhost:8080/admin/setpermissondata', {
+    return this.http.put('http://localhost:8686/admin/setpermissondata', {
       id: id,
       name: name, username:username, permToJpg: permToJpg, permToPng: permToPng, permToGif: permToGif
   }, httpOptions);
@@ -42,7 +42,7 @@ export class AdminService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.get('http://localhost:8080/admin/getpermissondata'+ name, httpOptions);
+    return this.http.get('http://localhost:8686/admin/getpermissondata'+ name, httpOptions);
   }
 
 }

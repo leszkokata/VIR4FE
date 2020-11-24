@@ -17,7 +17,7 @@ export class LoginService {
       })
     };
 
-    return this.http.post('http://localhost:8080/login', {username:username, password:password}, httpOptions);
+    return this.http.post('http://localhost:8686/login', {username:username, password:password}, httpOptions);
   }
 
   logout(username: string, password: string):Observable<any> {
@@ -28,6 +28,6 @@ export class LoginService {
       })
     };
 
-    return this.http.post('http://localhost:8080/logout', {username:username, password:password}, httpOptions);
+    return this.http.post('http://localhost:8686/logout', {username:username, password:password}, httpOptions);
   }
 }
